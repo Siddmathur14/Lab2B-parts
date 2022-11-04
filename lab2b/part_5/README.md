@@ -16,6 +16,8 @@ The values are taken using 2 different methods:
 
 2) Using a logic analyser : The connections remain the same but it is better suited to digital signals.
 
+- The upper row represents the plot for the SDA pins and the lower row represents the plot for the SCL pins
+
   ![I2C](https://github.com/Siddmathur14/Lab2B-parts/blob/main/lab2b/part_5/LAB2B_I2C_PART_5/I2C.png)
 
 
