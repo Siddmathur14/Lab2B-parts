@@ -1,6 +1,6 @@
-#Part 5 : I2C Traffic and Trace
+# Part 5 : I2C Traffic and Trace
 
-##This is an overview of how the I2C trace was generated on the oscilloscope
+## This is an overview of how the I2C trace was generated on the oscilloscope
 
 1) Connections are made between the RP2040 and the APDS9960 sensor. Values are taken by probing the SDA and SCL along with the ground pins of the APDS9960 sensor.
 
