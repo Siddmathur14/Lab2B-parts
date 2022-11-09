@@ -15,7 +15,7 @@ This part creates a REPL that lets us read and write from and to RP2040 register
 
 3) The user is asked for a value to overwrite the current value stored in the register. This value is stored in the variable ```reg_updated_value```. This value is then written to the register using the ```register_write()``` function.
 
-4)The overwritten value is now stored in the register and can be read by using the ```register_read()``` function. This value is then printed on to the console.
+4) The overwritten value is now stored in the register and can be read by using the ```register_read()``` function. This value is then printed on to the console.
 
 5) Now , the user is prompted for another input( ```bit_set```) and an ``OR``` operation is done between the input and the current value stored in the ```QTPY_GPIO_CTRL_REG``` .  
 
