@@ -54,37 +54,29 @@ int main() {
 
     ws2812_program_init(pio, sm, offset, WS2812_PIN, 800000, IS_RGBW);
     
-    volatile uint32_t* QTPY_GPIO_CTRL_REG = IO_BANK0_BASE + 0x004;
+    volatile uint32_t QTPY_BOOT_PIN_REG = IO_BANK0_BASE + 0x0A8;
     /* volatile uint32_t QTPY_BOOT_PIN_REG_PIN_NAME = */ 
-
-       
-    while(!stdio_usb_connected());
+    uint32_t timer = 0;
+    count =0;
 
     while(1){
         /* int user_inp = getchar_timeout_us(5000); */
         
-        uint32_t reg_status = register_read(QTPY_GPIO_CTRL_REG);
-        printf("Already existing value is: 0x%08x\n" , reg_status);
+        uint32_t button_status = register_read(QTPY_BOOT_PIN_REG);
 
-        uint32_t reg_updated_value;
-        printf("Enter your value:\n");
-        scanf("%x" , &reg_updated_value);
-        register_write(QTPY_GPIO_CTRL_REG , reg_updated_value);
-
-        uint32_t reg_overwrite_value= register_read(QTPY_GPIO_CTRL_REG);
-        printf(" The updated value of the register after overwriting is : 0x%08x\n", reg_overwrite_value);
-
-        uint32_t bit_set;
-        printf("Enter the value for bit setting:\n");
-        scanf("%x", &bit_set);
-        bit_set = bit_set |reg_overwrite_value;
-        register_write(QTPY_GPIO_CTRL_REG, bit_set);
-
-        
-        uint32_t reg_value_after_bit_set = register_read(QTPY_GPIO_CTRL_REG);
-        printf("Register Value after bit setting is:  0x%08x\n", reg_value_after_bit_set);
-
-        sleep_ms(1000);
-
+        if(button_status!= 0x00000000)
+        { timer +=1;
         }
-   }     
+
+        printf("0x%08x\n", button_status);
+        
+
+        /* if(user_inp != 1){ */
+        /*     set_neopixel_color(0xffafaf); */
+        /*     sleep_ms(500); */
+        /*     set_neopixel_color(0); */
+        /* } */
+        sleep_ms(1000);
+    }
+}
+

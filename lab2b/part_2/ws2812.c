@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,7 +11,6 @@
 #include "hardware/pio.h"
 #include "hardware/clocks.h"
 #include "ws2812.pio.h"
-#include "registers.h"
 
 #include "/home/siddhant/pico/pico-sdk/src/boards/include/boards/adafruit_qtpy_rp2040.h"
 
@@ -13,14 +18,23 @@
 #define NUM_PIXELS 150
 #define PICO_DEFAULT_WS2812_POWER_PIN 11
 
-#define QTPY_BOOT_PIN_NUM 21
-
 #ifdef PICO_DEFAULT_WS2812_PIN
 #define WS2812_PIN PICO_DEFAULT_WS2812_PIN
 #else
 // default to pin 2 if the board doesn't have a default WS2812 pin defined
 #define WS2812_PIN 2
 #endif
+
+/* static inline void put_pixel(uint32_t pixel_grb) { */
+/*     pio_sm_put_blocking(pio0, 0, pixel_grb << 8u); */
+/* } */
+
+/* static inline uint32_t urgb_u32(uint8_t r, uint8_t g, uint8_t b) { */
+/*     return */
+/*             ((uint32_t) (r) << 8) | */
+/*             ((uint32_t) (g) << 16) | */
+/*             (uint32_t) (b); */
+/* } */
 
 void set_neopixel_color(uint32_t color_num){
     //
@@ -38,14 +52,13 @@ void set_neopixel_color(uint32_t color_num){
 
 int main() {
     //set_sys_clock_48();
-    // Initialize the GPIO Pins
     const uint POWER_PIN_NAME = PICO_DEFAULT_WS2812_POWER_PIN;
     gpio_init(POWER_PIN_NAME);
-    gpio_init(QTPY_BOOT_PIN_NUM);
     gpio_set_dir(POWER_PIN_NAME, GPIO_OUT);
-    gpio_set_dir(QTPY_BOOT_PIN_NUM, GPIO_IN);
     gpio_put(POWER_PIN_NAME, 1);
     stdio_init_all();
+
+    printf("WS2812 Smoke Test, using pin %d", WS2812_PIN);
 
     // todo get free sm
     PIO pio = pio0;
@@ -53,38 +66,27 @@ int main() {
     uint offset = pio_add_program(pio, &ws2812_program);
 
     ws2812_program_init(pio, sm, offset, WS2812_PIN, 800000, IS_RGBW);
-    
-    volatile uint32_t* QTPY_GPIO_CTRL_REG = IO_BANK0_BASE + 0x004;
-    /* volatile uint32_t QTPY_BOOT_PIN_REG_PIN_NAME = */ 
-
-       
-    while(!stdio_usb_connected());
 
     while(1){
-        /* int user_inp = getchar_timeout_us(5000); */
-        
-        uint32_t reg_status = register_read(QTPY_GPIO_CTRL_REG);
-        printf("Already existing value is: 0x%08x\n" , reg_status);
-
-        uint32_t reg_updated_value;
-        printf("Enter your value:\n");
-        scanf("%x" , &reg_updated_value);
-        register_write(QTPY_GPIO_CTRL_REG , reg_updated_value);
-
-        uint32_t reg_overwrite_value= register_read(QTPY_GPIO_CTRL_REG);
-        printf(" The updated value of the register after overwriting is : 0x%08x\n", reg_overwrite_value);
-
-        uint32_t bit_set;
-        printf("Enter the value for bit setting:\n");
-        scanf("%x", &bit_set);
-        bit_set = bit_set |reg_overwrite_value;
-        register_write(QTPY_GPIO_CTRL_REG, bit_set);
-
-        
-        uint32_t reg_value_after_bit_set = register_read(QTPY_GPIO_CTRL_REG);
-        printf("Register Value after bit setting is:  0x%08x\n", reg_value_after_bit_set);
-
-        sleep_ms(1000);
-
+        int user_inp = getchar_timeout_us(5000);
+        if(user_inp != -1){
+            set_neopixel_color(0xffffaf);
+            sleep_ms(500);
+            set_neopixel_color(0);
         }
-   }     
+            sleep_ms(500);
+    }
+    
+    /* while(1){ */
+    /*     // If hello world is printed, blink the LED, with a certain color. */
+    /*     if (printf("Hello! World\n")){ */
+    /*         /1* put_pixel(urgb_u32(0xaf, 0, 0xfa)); *1/ */
+    /*         put_pixel(urgb_u32(0xaf, 0, 0xfa)); */
+    /*         sleep_ms(500); */
+    /*         /1* put_pixel(0); *1/ */
+    /*     } */
+        
+    /*     // Sleep for 1 second for smooth operation. */
+    /*     sleep_ms(1000); */
+    /* } */
+}
