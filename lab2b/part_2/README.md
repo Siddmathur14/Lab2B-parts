@@ -17,7 +17,7 @@ This part creates a REPL that lets us read and write from and to RP2040 register
 
 4) The overwritten value is now stored in the register and can be read by using the ```register_read()``` function. This value is then printed on to the console.
 
-5) Now , the user is prompted for another input( ```bit_set```) and an ``OR``` operation is done between the input and the current value stored in the ```QTPY_GPIO_CTRL_REG``` .  
+5) Now , the user is prompted for another input( ```bit_set```) and an ```OR``` operation is done between the input and the current value stored in the ```QTPY_GPIO_CTRL_REG``` .  
 
 6) As can be seen from the screenshot , the initial address in the register is 0x0000001f. I input a value of 6 which overwrites the initial address and becomes 0x0000006. I then input a value of 2 for bit setting. A bitwise ```OR``` operation is done between the overwritten value and the input for bit setting which yields an output of 0x00000006. ( 00000110 | 00000010 = 00000110  which is equivalent to 0x00000006 ).
 
