@@ -22,7 +22,7 @@
 #include "hardware/structs/bus_ctrl.h"
 #include "registers.h"
 
-#include "/home/ruturajn/Git-Repos/pico/pico-sdk/src/boards/include/boards/adafruit_qtpy_rp2040.h"
+#include "/home/siddhant/pico/pico-sdk/src/boards/include/boards/adafruit_qtpy_rp2040.h"
 
 #define QTPY_BOOT_PIN_NUM 21
 #define QTPY_BOOT_PIN_REG ((volatile uint32_t *)(IO_BANK0_BASE + 0x0A8))
