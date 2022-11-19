@@ -10,3 +10,7 @@
 - Until the user guesses the correct answer the RED LED blinks at each guess, once the user guesses the right answer the BLUE LED blinks, and the game mode is exited.
 
 https://user-images.githubusercontent.com/56625259/202835773-e174218b-c668-4dcd-9049-9576d8f65820.mp4
+
+
+
+![image](https://user-images.githubusercontent.com/56625259/197115556-33657e7e-3034-4e4f-be93-bc57ae4e4304.png)
