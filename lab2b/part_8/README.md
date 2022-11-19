@@ -1,5 +1,7 @@
+# APDS PROTOCOL
 
 
+- The following demonstration video shows color and proximity readings acquired from the APDS9960 sensor.
 
 
 
