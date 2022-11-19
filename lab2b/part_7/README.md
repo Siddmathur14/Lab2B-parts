@@ -1,3 +1,8 @@
+# PIO SEQUENCER
+
+
+https://user-images.githubusercontent.com/114244849/202834051-b8101967-a82d-4c59-a3d3-cd2200860f81.mp4
+
 
 - This code utilizes the PIO module to monitor the BOOT button presses.
 
@@ -12,3 +17,7 @@
 - Note that the python serial library was also used here, for storing the recorded sequence on to the host, and then reading it to replay the sequence on the RP2040.
 - The re_build.sh file is a bash script that removes the exisiting build directory, and creates a new one. After that it navigates into it, and calls cmake, followed by make. This is a convinience script written to automate the build process.
 - Also, following is a screenshot of the recorded sequence that was stored in the text file on the host,
+
+
+
+
