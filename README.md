@@ -1,7 +1,7 @@
 # PROPOSAL
 
 
--The proposal is updated to guessing game calLed higher_lower, where the user is asked to enter a number that would be considered as a seed to generate a random number.
+-The proposal is updated to guessing game called higher_lower, where the user is asked to enter a number that would be considered as a seed to generate a random number.
 
 - Based on the generated random number whose function can be found here.
 
