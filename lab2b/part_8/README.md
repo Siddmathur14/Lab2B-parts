@@ -3,9 +3,7 @@
 
 - The following demonstration video shows color and proximity readings acquired from the APDS9960 sensor.
 
-
-
-https://user-images.githubusercontent.com/114244849/202834933-fc4f8476-e49f-4f84-aab6-71e267219a27.mp4
+https://user-images.githubusercontent.com/56625259/202835965-74a1471e-3236-4d28-85d6-d6fb04ee9883.mp4
 
 
 
