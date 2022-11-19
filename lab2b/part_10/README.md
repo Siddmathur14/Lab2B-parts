@@ -4,8 +4,7 @@
 
 
 
-
-https://user-images.githubusercontent.com/114244849/202835152-5bc9642c-2eee-420b-940f-033fae3eded3.mp4
+https://user-images.githubusercontent.com/56625259/202836260-0ca89f08-c9da-438a-b22f-94af741534e5.mp4
 
 
 - Here, the guessing game proposed in the beginning of the lab was used, along with the PIO based sequencer that we created in the duration of the lab.
